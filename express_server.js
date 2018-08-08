@@ -20,7 +20,6 @@ app.use(bodyParser.urlencoded({extended: true}));
 var urlDatabase = {
   "b2xVn2": "http://www.lighthouselabs.ca",
   "9sm5xK": "http://www.google.com",
-
 };
 
 
@@ -46,15 +45,22 @@ app.get("/urls", (req, res) => {
 app.get("/hello", (req, res) => {
   res.end("<html><body>Hello <b>World</b></body></html>\n");
 });
+app.post("/urls/:id/delete", (req, res) => {
+  delete urlDatabase[req.params.id]
+  console.log(req.params.id)
+  res.redirect("/urls")
+})
 app.post("/urls",(req, res) => {
   var longURL = req.body.longURL;
   var shortURL = generateRandomString();
   urlDatabase[shortURL] = longURL;
   console.log(urlDatabase);
+});
 
+app.post("/urls/:id",(req, res) => {
+  urlDatabase[req.params.id] = req.body.longURL
+  res.redirect("/urls");
 
-  console.log(req.body);
-  res.send("OK");
 });
 
 app.listen(PORT, () => {

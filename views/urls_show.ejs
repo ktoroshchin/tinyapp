@@ -7,5 +7,9 @@
   <!-- var shortURL = "b2xvn2"; -->
   <p><%=shortURL%></p>
   <p><%=longURL%></p>
+<form action="/urls/<%= shortURL %>" method="POST" style="margin:150px;">
+<input type="text" name="longURL"/>
+<input type="submit" value="Submit"/>
+</form>
 </body>
 </html>
