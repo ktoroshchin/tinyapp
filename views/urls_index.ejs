@@ -4,6 +4,10 @@
   <title>TinyApp</title>
 </head>
 <body>
+
+
+
+  <% include ./partials/_header %>
   <% for(var url in urls) { %>
   <p><%= url %> - <%= urls[url] %></p>
   <form method="POST" action="/urls/<%= url %>/delete"><button>DELETE</button></form></br><a href="/urls/b2xVn2">Edit</a>
